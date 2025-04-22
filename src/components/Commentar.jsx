@@ -1,7 +1,11 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/display-name */
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { getDocs, addDoc, collection, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from '../firebase-comment';
+import { db, storage } from '../firebase';
 import { MessageCircle, UserCircle2, Loader2, AlertCircle, Send, ImagePlus, X } from 'lucide-react';
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -16,11 +20,11 @@ const Comment = memo(({ comment, formatDate, index }) => (
                 <img
                     src={comment.profileImage}
                     alt={`${comment.userName}'s profile`}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-indigo-500/30"
+                    className="w-10 h-10 rounded-full object-cover border-2 border-emerald-500/30"
                     loading="lazy"
                 />
             ) : (
-                <div className="p-2 rounded-full bg-indigo-500/20 text-indigo-400 group-hover:bg-indigo-500/30 transition-colors">
+                <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400 group-hover:bg-emerald-500/30 transition-colors">
                     <UserCircle2 className="w-5 h-5" />
                 </div>
             )}
@@ -87,7 +91,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}z
                     placeholder="Enter your name"
-                    className="w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                    className="w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
                     required
                 />
             </div>
@@ -101,12 +105,12 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                     value={newComment}
                     onChange={handleTextareaChange}
                     placeholder="Write your message here..."
-                    className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none min-h-[120px]"
+                    className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all resize-none min-h-[120px]"
                     required
                 />
             </div>
 
-            <div className="space-y-2" data-aos="fade-up" data-aos-duration="1400">
+            {/* <div className="space-y-2" data-aos="fade-up" data-aos-duration="1400">
                 <label className="block text-sm font-medium text-white">
                     Profile Photo <span className="text-gray-400">(optional)</span>
                 </label>
@@ -116,7 +120,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                             <img
                                 src={imagePreview}
                                 alt="Profile preview"
-                                className="w-16 h-16 rounded-full object-cover border-2 border-indigo-500/50"
+                                className="w-16 h-16 rounded-full object-cover border-2 border-emerald-500/50"
                             />
                             <button
                                 type="button"
@@ -143,7 +147,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                             <button
                                 type="button"
                                 onClick={() => fileInputRef.current?.click()}
-                                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30 transition-all border border-dashed border-indigo-500/50 hover:border-indigo-500 group"
+                                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500/20 text-emerald-400 hover:bg-inemeralddigo-500/30 transition-all border border-dashed border-emerald-500/50 hover:border-emerald-500 group"
                             >
                                 <ImagePlus className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 <span>Choose Profile Photo</span>
@@ -154,13 +158,13 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                         </div>
                     )}
                 </div>
-            </div>
+            </div> */}
 
             <button
                 type="submit"
                 disabled={isSubmitting}
                 data-aos="fade-up" data-aos-duration="1000"
-                className="relative w-full h-12 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-xl font-medium text-white overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                className="relative w-full h-12 bg-gradient-to-r from-[#53f79a] to-[#169875] rounded-xl font-medium text-white overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
             >
                 <div className="absolute inset-0 bg-white/20 translate-y-12 group-hover:translate-y-0 transition-transform duration-300" />
                 <div className="relative flex items-center justify-center gap-2">
@@ -255,14 +259,14 @@ const Komentar = () => {
     }, []);
 
     return (
-        <div className="w-full bg-gradient-to-b from-white/10 to-white/5 rounded-2xl overflow-hidden backdrop-blur-xl shadow-xl" data-aos="fade-up" data-aos-duration="1000">
+        <div className="w-full h-full bg-gradient-to-b from-white/10 to-white/5 rounded-2xl overflow-hidden backdrop-blur-xl shadow-xl" data-aos="fade-up" data-aos-duration="1000">
         <div className="p-6 border-b border-white/10" data-aos="fade-down" data-aos-duration="800">
             <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-indigo-500/20">
-                    <MessageCircle className="w-6 h-6 text-indigo-400" />
+                <div className="p-2 rounded-xl bg-emerald-500/20">
+                    <MessageCircle className="w-6 h-6 text-emerald-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white">
-                    Comments <span className="text-indigo-400">({comments.length})</span>
+                    Comments <span className="text-emerald-400">({comments.length})</span>
                 </h3>
             </div>
         </div>
@@ -278,10 +282,10 @@ const Komentar = () => {
                 <CommentForm onSubmit={handleCommentSubmit} isSubmitting={isSubmitting} error={error} />
             </div>
 
-            <div className="space-y-4 h-[300px] overflow-y-auto custom-scrollbar" data-aos="fade-up" data-aos-delay="200">
+            <div className="space-y-4 h-[400px] overflow-y-auto custom-scrollbar" data-aos="fade-up" data-aos-delay="200">
                 {comments.length === 0 ? (
-                    <div className="text-center py-8" data-aos="fade-in">
-                        <UserCircle2 className="w-12 h-12 text-indigo-400 mx-auto mb-3 opacity-50" />
+                    <div className="text-center py-8 mt-20" data-aos="fade-in">
+                        <UserCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-3 opacity-50" />
                         <p className="text-gray-400">No comments yet. Start the conversation!</p>
                     </div>
                 ) : (
@@ -299,13 +303,14 @@ const Komentar = () => {
         <style jsx>{`
             .custom-scrollbar::-webkit-scrollbar {
                 width: 6px;
+                background-color: transparent;
             }
             .custom-scrollbar::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.05);
+                background: rgba(3, 0, 20, 0.4);
                 border-radius: 6px;
             }
             .custom-scrollbar::-webkit-scrollbar-thumb {
-                background: rgba(99, 102, 241, 0.5);
+                background: rgba(99, 102, 241, 0.3);
                 border-radius: 6px;
             }
             .custom-scrollbar::-webkit-scrollbar-thumb:hover {

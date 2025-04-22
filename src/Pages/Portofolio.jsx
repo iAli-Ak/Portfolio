@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState, useCallback } from "react";
 import { db, collection } from "../firebase";
 import { getDocs } from "firebase/firestore";
@@ -65,7 +67,7 @@ const ToggleButton = ({ onClick, isShowingMore }) => (
         <polyline points={isShowingMore ? "18 15 12 9 6 15" : "6 9 12 15 18 9"}></polyline>
       </svg>
     </span>
-    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500/50 transition-all duration-300 group-hover:w-full"></span>
+    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
   </button>
 );
 
@@ -109,10 +111,10 @@ const techStacks = [
   { icon: "vite.svg", language: "Vite" },
   { icon: "nodejs.svg", language: "Node JS" },
   { icon: "bootstrap.svg", language: "Bootstrap" },
-  { icon: "firebase.svg", language: "Firebase" },
-  { icon: "MUI.svg", language: "Material UI" },
+  { icon: "SQL Developer.svg", language: "SQL" },
   { icon: "vercel.svg", language: "Vercel" },
-  { icon: "SweetAlert.svg", language: "SweetAlert2" },
+  { icon: "csharp.svg", language: "C#" },
+  { icon: "Three.js.svg", language: "Three.js" },
 ];
 
 export default function FullWidthTabs() {
@@ -134,7 +136,7 @@ export default function FullWidthTabs() {
 
   const fetchData = useCallback(async () => {
     try {
-      const projectCollection = collection(db, "projects");
+      const projectCollection = collection(db, "Projects");
       const certificateCollection = collection(db, "certificates");
 
       const [projectSnapshot, certificateSnapshot] = await Promise.all([
@@ -181,13 +183,13 @@ export default function FullWidthTabs() {
   const displayedCertificates = showAllCertificates ? certificates : certificates.slice(0, initialItems);
 
   return (
-    <div className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-[#030014] overflow-hidden" id="Portofolio">
+    <div className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-[#212121] overflow-hidden" id="Portofolio">
       {/* Header section - unchanged */}
       <div className="text-center pb-10" data-aos="fade-up" data-aos-duration="1000">
-        <h2 className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+        <h2 className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#53f79a] to-[#169875]">
           <span style={{
-            color: '#6366f1',
-            backgroundImage: 'linear-gradient(45deg, #6366f1 10%, #a855f7 93%)',
+            color: '#53f79a',
+            backgroundImage: 'linear-gradient(45deg, #53f79a 10%, #169875 93%)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
@@ -196,7 +198,7 @@ export default function FullWidthTabs() {
           </span>
         </h2>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
-          Explore my journey through projects, certifications, and technical expertise. 
+          Explore my journey through projects and technical expertise. 
           Each section represents a milestone in my continuous learning path.
         </p>
       </div>
@@ -248,7 +250,7 @@ export default function FullWidthTabs() {
                 borderRadius: "12px",
                 "&:hover": {
                   color: "#ffffff",
-                  backgroundColor: "rgba(139, 92, 246, 0.1)",
+                  backgroundColor: "rgba(45, 212, 191, 0.1)",
                   transform: "translateY(-2px)",
                   "& .lucide": {
                     transform: "scale(1.1) rotate(5deg)",
@@ -256,10 +258,10 @@ export default function FullWidthTabs() {
                 },
                 "&.Mui-selected": {
                   color: "#fff",
-                  background: "linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2))",
-                  boxShadow: "0 4px 15px -3px rgba(139, 92, 246, 0.2)",
+                  background: "linear-gradient(135deg, rgba(45, 212, 191, 0.15), rgba(20, 184, 166, 0.15))",
+                  boxShadow: "0 4px 15px -3px rgba(45, 212, 191, 0.2)",
                   "& .lucide": {
-                    color: "#a78bfa",
+                    color: "#2dd4bf",
                   },
                 },
               },
@@ -277,15 +279,15 @@ export default function FullWidthTabs() {
               {...a11yProps(0)}
             />
             <Tab
-              icon={<Award className="mb-2 w-5 h-5 transition-all duration-300" />}
-              label="Certificates"
-              {...a11yProps(1)}
-            />
-            <Tab
               icon={<Boxes className="mb-2 w-5 h-5 transition-all duration-300" />}
               label="Tech Stack"
-              {...a11yProps(2)}
+              {...a11yProps(1)}
             />
+             {/* <Tab
+              icon={<Award className="mb-2 w-5 h-5 transition-all duration-300" />}
+              label="Certificates"
+              {...a11yProps(2)}
+            /> */}
           </Tabs>
         </AppBar>
 
@@ -324,7 +326,7 @@ export default function FullWidthTabs() {
             )}
           </TabPanel>
 
-          <TabPanel value={value} index={1} dir={theme.direction}>
+          {/* <TabPanel value={value} index={1} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3 md:gap-5 gap-4">
                 {displayedCertificates.map((certificate, index) => (
@@ -346,11 +348,11 @@ export default function FullWidthTabs() {
                 />
               </div>
             )}
-          </TabPanel>
+          </TabPanel> */}
 
-          <TabPanel value={value} index={2} dir={theme.direction}>
+          <TabPanel value={value} index={1} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden pb-[5%]">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 gap-5">
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 gap-5">
                 {techStacks.map((stack, index) => (
                   <div
                     key={index}

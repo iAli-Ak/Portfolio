@@ -1,5 +1,10 @@
-import React, { useEffect, memo, useMemo } from "react"
-import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles, UserCheck } from "lucide-react"
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/no-unknown-property */
+import  { useEffect, memo, useMemo } from "react"
+import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles } from "lucide-react"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -8,7 +13,7 @@ const Header = memo(() => (
   <div className="text-center lg:mb-8 mb-2 px-[5%]">
     <div className="inline-block relative group">
       <h2 
-        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]" 
+        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#169875] to-[#53f79a]" 
         data-aos="zoom-in-up"
         data-aos-duration="600"
       >
@@ -20,9 +25,9 @@ const Header = memo(() => (
       data-aos="zoom-in-up"
       data-aos-duration="800"
     >
-      <Sparkles className="w-5 h-5 text-purple-400" />
+      <Sparkles className="w-5 h-5 text-green-400" />
       Transforming ideas into digital experiences
-      <Sparkles className="w-5 h-5 text-purple-400" />
+      <Sparkles className="w-5 h-5 text-green-400" />
     </p>
   </div>
 ));
@@ -36,9 +41,9 @@ const ProfileImage = memo(() => (
     >
       {/* Optimized gradient backgrounds with reduced complexity for mobile */}
       <div className="absolute -inset-6 opacity-[25%] z-0 hidden sm:block">
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-indigo-500 to-purple-600 rounded-full blur-2xl animate-spin-slower" />
-        <div className="absolute inset-0 bg-gradient-to-l from-fuchsia-500 via-rose-500 to-pink-600 rounded-full blur-2xl animate-pulse-slow opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-600 via-cyan-500 to-teal-400 rounded-full blur-2xl animate-float opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-500 to-teal-600 rounded-full blur-2xl animate-spin-slower" />
+        <div className="absolute inset-0 bg-gradient-to-l from-emerald-500 via-green-500 to-teal-600 rounded-full blur-2xl animate-pulse-slow opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-emerald-600 via-green-500 to-teal-400 rounded-full blur-2xl animate-float opacity-50" />
       </div>
 
       <div className="relative">
@@ -70,7 +75,7 @@ const ProfileImage = memo(() => (
 
 const StatCard = memo(({ icon: Icon, color, value, label, description, animation }) => (
   <div data-aos={animation} data-aos-duration={1300} className="relative group">
-    <div className="relative z-10 bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-white/10 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full flex flex-col justify-between">
+    <div className="relative z-10 bg-neutral-800 backdrop-blur-lg rounded-2xl p-6 border border-white/10 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-[#2d2d2d] h-full flex flex-col justify-between">
       <div className={`absolute -z-10 inset-0 bg-gradient-to-br ${color} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
       
       <div className="flex items-center justify-between mb-4">
@@ -114,19 +119,19 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
 
 const AboutPage = () => {
   // Memoized calculations
-  const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
+  const { totalProjects, YearExperience } = useMemo(() => { //totalCertificates
     const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
-    const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
+    //const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
     
-    const startDate = new Date("2021-11-06");
+    const startDate = new Date("2024-10-20");
     const today = new Date();
     const experience = today.getFullYear() - startDate.getFullYear() -
       (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
 
     return {
       totalProjects: storedProjects.length,
-      totalCertificates: storedCertificates.length,
-      YearExperience: experience
+      //totalCertificates: storedCertificates.length,
+      YearExperience: 1 // change it to experience
     };
   }, []);
 
@@ -158,29 +163,29 @@ const AboutPage = () => {
   const statsData = useMemo(() => [
     {
       icon: Code,
-      color: "from-[#6366f1] to-[#a855f7]",
+      color: "from-[#1f2937] to-[#27272a]",
       value: totalProjects,
       label: "Total Projects",
       description: "Innovative web solutions crafted",
       animation: "fade-right",
     },
-    {
-      icon: Award,
-      color: "from-[#a855f7] to-[#6366f1]",
-      value: totalCertificates,
-      label: "Certificates",
-      description: "Professional skills validated",
-      animation: "fade-up",
-    },
+    // {
+    //   icon: Award,
+    //   color: "from-[#1f2937] to-[#27272a]",
+    //   value: totalCertificates,
+    //   label: "Certificates",
+    //   description: "Professional skills validated",
+    //   animation: "fade-up",
+    // },
     {
       icon: Globe,
-      color: "from-[#6366f1] to-[#a855f7]",
+      color: "from-[#1f2937] to-[#27272a]",
       value: YearExperience,
       label: "Years of Experience",
       description: "Continuous learning journey",
       animation: "fade-left",
     },
-  ], [totalProjects, totalCertificates, YearExperience]);
+  ], [totalProjects, YearExperience]); //totalCertificates
 
   return (
     <div
@@ -197,7 +202,7 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#53f79a] to-[#169875]">
                 Hello, I'm
               </span>
               <span 
@@ -205,7 +210,7 @@ const AboutPage = () => {
                 data-aos="fade-right"
                 data-aos-duration="1300"
               >
-                Eki Zulfar Rachman
+                Ali Al Khatam
               </span>
             </h2>
             
@@ -214,18 +219,17 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              seorang siswa Teknik Jaringan Komputer dan Telekomunikasi yang
-              tertarik dalam pengembangan Front-End. Saya berfokus pada
-              menciptakan pengalaman digital yang menarik dan selalu berusaha
-              memberikan solusi terbaik dalam setiap proyek.
+              Qualified Computer Science graduate specializing in web development, with expertise in building and deploying
+dynamic websites using modern web technologies. Strong in both front-end and back-end development, focused on
+delivering responsive and user-friendly designs.
             </p>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="https://drive.google.com/drive/folders/1BOm51Grsabb3zj6Xk27K-iRwI1zITcpo" className="w-full lg:w-auto">
+              <a href="https://drive.google.com/file/d/1jR_m8LANKmnwM_MMF76cQhZGSWfJ_eRt/view?usp=drive_link" className="w-full lg:w-auto">
               <button 
                 data-aos="fade-up"
                 data-aos-duration="800"
-                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 shadow-lg hover:shadow-xl animate-bounce-slow"
+                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-[#53f79a] to-[#169875] text-white font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 shadow-lg hover:shadow-xl animate-bounce-slow"
               >
                 <FileText className="w-4 h-4 sm:w-5 sm:h-5" /> Download CV
               </button>
@@ -234,7 +238,7 @@ const AboutPage = () => {
               <button 
                 data-aos="fade-up"
                 data-aos-duration="1000"
-                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg border border-[#a855f7]/50 text-[#a855f7] font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 hover:bg-[#a855f7]/10 animate-bounce-slow delay-200"
+                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg border border-[#53f79a]/50 text-[#169875] font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 hover:bg-[#2d2d2d] animate-bounce-slow delay-200"
               >
                 <Code className="w-4 h-4 sm:w-5 sm:h-5" /> View Projects
               </button>
@@ -246,7 +250,7 @@ const AboutPage = () => {
         </div>
 
         <a href="#Portofolio">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 cursor-pointer">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 cursor-pointer">
             {statsData.map((stat) => (
               <StatCard key={stat.label} {...stat} />
             ))}

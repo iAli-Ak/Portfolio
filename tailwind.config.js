@@ -6,6 +6,9 @@ export default {
 			backdropBlur: {
 				sm: '4px',
 			  },
+			  colors: {
+				customGray: '#212121'
+			  }
 			
 			
 		  },
