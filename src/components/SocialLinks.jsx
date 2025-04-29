@@ -33,7 +33,7 @@ const socialLinks = [
 const SocialLinks = () => {
 
   return (
-    <div className="w-full bg-gradient-to-br from-neutral-800/10 to-zinc-800/5 rounded-2xl p-6 py-8 backdrop-blur-xl">
+    <div className="w-full bg-zinc-700 rounded-2xl p-6 py-8 backdrop-blur-xl">
       <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
         <span className="inline-block w-8 h-1 bg-green-500 rounded-full"></span>
         Connect With Me
