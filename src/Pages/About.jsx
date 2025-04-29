@@ -225,7 +225,7 @@ delivering responsive and user-friendly designs.
             </p>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="https://drive.google.com/file/d/1jR_m8LANKmnwM_MMF76cQhZGSWfJ_eRt/view?usp=drive_link" className="w-full lg:w-auto">
+              <a href="https://drive.google.com/file/d/1Fv9DgY-vjEQuCacPwCJg5aUuCuSwrwXA/view?usb=drivedsk" className="w-full lg:w-auto">
               <button 
                 data-aos="fade-up"
                 data-aos-duration="800"
